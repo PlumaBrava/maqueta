@@ -17,7 +17,7 @@ export class WizardComponent {
     public showConfirm:boolean;
     public confirmed:boolean;
 
-    constructor(private formBuilder: FormBuilder) { 
+    constructor(private formBuilder: FormBuilder, ) { 
 
         let password = new FormControl('', Validators.compose([Validators.required, Validators.minLength(6)]));
         let confirmPassword = new FormControl('', Validators.compose([Validators.required, CustomValidators.equalTo(password)]));  

@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile.component';
 import { ProjectsComponent } from './projects/projects.component';
-import { UserInfoComponent } from './user-info/user-info.component';
+// import { UserInfoComponent } from './user-info/user-info.component';
 
 export const routes = [
   {
@@ -12,8 +12,9 @@ export const routes = [
       component: ProfileComponent,
       children:[
         { path: '', redirectTo: 'projects', pathMatch: 'full'},
-        { path: 'projects', component: ProjectsComponent, data: { breadcrumb: 'Projects' } },
-        { path: 'user-info', component: UserInfoComponent, data: { breadcrumb: 'User Information' } }
+        { path: 'projects', component: ProjectsComponent, data: { breadcrumb: 'Projects' } }
+        // ,
+        // { path: 'user-info', component: UserInfoComponent, data: { breadcrumb: 'User Information' } }
       ]
   }
 ];
@@ -22,7 +23,7 @@ export const routes = [
   declarations: [
     ProfileComponent, 
     ProjectsComponent, 
-    UserInfoComponent
+    // UserInfoComponent
   ],
   imports: [
     CommonModule,

@@ -51,7 +51,8 @@ export const verticalMenuItems = [
     new Menu (142, 'Level 3', null, null, 'folder-open-o', null, true, 141),
     new Menu (143, 'Level 4', null, null, 'folder-open-o', null, true, 142),
     new Menu (144, 'Level 5', null, null, 'folder-o', null, false, 143),
-    new Menu (200, 'External Link', null, 'http://themeseason.com', 'external-link', '_blank', false, 0)
+    new Menu (200, 'External Link', null, 'http://themeseason.com', 'external-link', '_blank', false, 0),
+     new Menu (201, 'Membership', '/users/u/membership', null, 'users', null, false, 0), 
 ]
 
 export const horizontalMenuItems = [ 

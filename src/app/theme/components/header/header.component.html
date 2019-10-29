@@ -7,17 +7,28 @@
             <div class="row align-items-center">
                 <div class="col-md-5">
                     <div class="d-flex justify-content-center align-items-center pt-md-0 pt-3 info">
-                        <img src="assets/img/users/user.jpg" class="rounded-circle user-img"> 
+                        <!-- <img src="assets/img/users/user.jpg" class="rounded-circle user-img">  -->
+
+ <!-- <div *ngIf="authService"> -->
+                <img *ngIf="authService.hayImage" src="{{authService.currentUserPhotoURL}}" alt="user-img" class="user-img rounded-circle"> 
+                    <!-- </div>                -->
+                        
                         <div class="d-flex flex-column pl-3">
-                            <h5 class="mb-0">Emilio Verdines <i class="fa fa-check-circle fs-13 text-success ml-2"></i></h5>
+                            <!-- <h5 class="mb-0">Emilio Verdines <i class="fa fa-check-circle fs-13 text-success ml-2"></i></h5> -->
+                            <h5 class="mb-0"> {{authService.currentUserDisplayName}} <i class="fa fa-check-circle fs-13 text-success ml-2"></i></h5>
                             <span>Project menecer</span>
                             <div class="pt-3">
-                                <a routerLink="/profile" class="btn btn-success mr-1">Profile</a> 
-                                <a routerLink="/profile/user-info" class="btn btn-gray">Edit</a> 
+                                <!-- <a routerLink="/profile" class="btn btn-success mr-1">Profile</a>  -->
+                                <a routerLink="/users/u/projects" class="btn btn-success mr-1">Profile</a> 
+                                <!-- <a routerLink="/profile/user-info" class="btn btn-gray">Edit</a>  -->
+                                <a routerLink="/users/u/user-info" class="btn btn-gray">Edit</a> 
                             </div>                            
                         </div>
                     </div>
                 </div>
+
+                <!-- Mensaje central -->
+
                 <div class="col-md-7">
                     <div class="row py-4">                        
                         <div class="col-lg-7 col-sm-8 col-12 left-border">
@@ -36,6 +47,10 @@
                                 </form>
                             </div>                           
                         </div>
+
+
+                    <!-- Opciones derecha -->
+
                         <div class="col-lg-5 col-sm-4 left-border d-none d-sm-block">
                             <div class="info w-100p mx-auto">
                                 <div class="custom-control custom-checkbox mb-1">
@@ -72,10 +87,15 @@
                 </div>
             </div>
         </div>
+
+
+        <!-- Borde Inferior (subMenú)-->
+
         <div class="d-flex justify-content-start align-items-center top-navbar">                  
-            
+            <!-- Logo -->
             <a class="logo" routerLink="/" (click)="closeSubMenus()">
-                <span class="start">start</span><span class="ng">NG</span>
+<!--            <span class="start">start</span><span class="ng">NG</span> -->
+                <span class="start">Planifi-K</span><span class="ng"></span>
             </a>
 
             <span class="navbar-text menu-icon transition ml-3 mr-3" [ngClass]="{'open': settings.theme.showMenu}"
@@ -116,10 +136,11 @@
                     <i class="fa fa-commenting-o" aria-hidden="true"></i>
                 </span> 
                 <span class="d-none d-sm-inline-block">
-                    <app-user-menu></app-user-menu>
+                    <users-user-menu></users-user-menu>
                 </span> 
-                <span class="pl-2 pr-2">
+                <span class="pl-2 pr-2" (click)="logOut()">
                     <a routerLink="/login">
+                    <!-- <a routerLink="/login"> -->
                         <i class="fa fa-sign-out" aria-hidden="true"></i>
                     </a>                   
                 </span> 

@@ -6,10 +6,12 @@
     <div class="dropdown-menu dropdown-menu-right rounded-0 mt-3 p-0 box-shadow" aria-labelledby="user-menu">
         <div class="user-menu">
             <div class="user-info text-center p-3">
-                <img src="assets/img/users/user.jpg" alt="user-img" class="user-img rounded-circle">                    
+
+                <!-- <img src="assets/img/users/user.jpg" alt="user-img" class="user-img rounded-circle">                     -->
+                <img src="{{authService.currentUserPhotoURL}}" alt="user-img" class="user-img rounded-circle">                    
                 <p class="mt-1 mb-0"> 
-                    Emilio Verdines - Web Developer
-                    <small>Member since May. 2016</small>
+                    {{authService.currentUserDisplayName}}<br>
+                    <small>Usuario desde {{authService.getFechaCreacion | date:'dd/MM/yyyy' }}</small>
                 </p>
             </div>
             <a class="dropdown-item" routerLink="/profile"><i class="fa fa-user mr-2"></i>Profile</a>

@@ -3,7 +3,8 @@ import { trigger,  state,  style, transition, animate } from '@angular/animation
 import { AppSettings } from '../../../app.settings';
 import { Settings } from '../../../app.settings.model';
 import { MenuService } from '../menu/menu.service';
-
+import { AuthService } from '../../../maqueta/users/services/auth.service';
+// import { MensajesService }  from '../../../services/mensajes/mensajes.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -24,7 +25,10 @@ export class HeaderComponent implements OnInit {
   public showInfoContent:boolean = false;
   public settings: Settings;
   public menuItems:Array<any>;
-  constructor(public appSettings:AppSettings, public menuService:MenuService) {
+  constructor(public appSettings:AppSettings, public menuService:MenuService,
+              public authService:AuthService,
+              // private mensageService:MensajesServiceation
+              ) {
       this.settings = this.appSettings.settings;
       this.menuItems = this.menuService.getHorizontalMenuItems();
   }
@@ -60,4 +64,8 @@ export class HeaderComponent implements OnInit {
       }
   }
   
+ logOut(){
+   console.log('logout');
+     this.authService.signOut();
+ } 
 }

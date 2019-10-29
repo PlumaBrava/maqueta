@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-
+import { AuthService } from '../../../maqueta/users/services/auth.service';
 @Component({
   selector: 'app-user-menu',
   templateUrl: './user-menu.component.html',
@@ -8,7 +8,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class UserMenuComponent implements OnInit {
 
-  constructor() { }
+  constructor( public authService:AuthService,) { }
 
   ngOnInit() {
   }

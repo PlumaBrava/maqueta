@@ -32,7 +32,7 @@ import { BackTopComponent } from './theme/components/back-top/back-top.component
 import { FullScreenComponent } from './theme/components/fullscreen/fullscreen.component';
 import { ApplicationsComponent } from './theme/components/applications/applications.component';
 import { MessagesComponent } from './theme/components/messages/messages.component';
-import { UserMenuComponent } from './theme/components/user-menu/user-menu.component';
+// import { UserMenuComponent } from './theme/components/user-menu/user-menu.component';
 import { FlagsMenuComponent } from './theme/components/flags-menu/flags-menu.component';
 import { SideChatComponent } from './theme/components/side-chat/side-chat.component';
 import { FavoritesComponent } from './theme/components/favorites/favorites.component';
@@ -40,7 +40,42 @@ import { BlankComponent } from './pages/blank/blank.component';
 import { SearchComponent } from './pages/search/search.component';
 import { NotFoundComponent } from './pages/errors/not-found/not-found.component';
 
+//  Modulo de ususario
+// import { UserMenuComponent } from './maqueta/users/user-menu/user-menu.component';
 
+// environmet
+import { environment } from '../environments/environment';
+
+// librerias de angular Fire
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/database';  //Firedatabase
+import { AngularFirestoreModule   } from '@angular/fire/firestore/'; //Cloud Firestore
+// import { AngularFireMessagingModule } from '@angular/fire/messaging'; //Messaging
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireDatabase } from '@angular/fire/database';
+
+
+import { ReactiveFormsModule } from '@angular/forms';
+
+// Servicios Internos
+import { AuthService } from './services/firebase/auth.service';
+import { FiredatabaseService } from './services/firebase/firedatabase.service';
+import {MensajesService} from './services/mensajes/mensajes.service';
+import {ModalMensajeComponent} from './services/modal-mensaje/modal-mensaje.component';
+
+
+
+// Módulos de la maqueta
+import {UsersModule} from './maqueta/users/users.module';
+import {SharedModule} from './maqueta/shared/shared.module';
+
+
+// Componenetes propios
+/*import { LogMailComponent } from '../app/log/log-mail/log-mail.component';
+import { RegistrarseComponent } from '../app/log/registrarse/registrarse.component';
+import { SolicituEmpresaComponent } from '../app/admin/users/solicitu-empresa/solicitu-empresa.component';
+*/
 
 @NgModule({  
   imports: [
@@ -59,7 +94,22 @@ import { NotFoundComponent } from './pages/errors/not-found/not-found.component'
     }),
     ToastrModule.forRoot(), 
     PipesModule,
-    routing
+    routing,
+
+    FormsModule,
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),  
+    AngularFirestoreModule.enablePersistence(),
+    AngularFireStorageModule,
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
+    AngularFirestoreModule,
+
+    UsersModule,
+    SharedModule
+
+
+
   ],
   declarations: [
     AppComponent,
@@ -74,7 +124,7 @@ import { NotFoundComponent } from './pages/errors/not-found/not-found.component'
     FullScreenComponent,
     ApplicationsComponent,
     MessagesComponent,
-    UserMenuComponent,
+    // UserMenuComponent,
     FlagsMenuComponent,
     SideChatComponent,
     FavoritesComponent,
@@ -82,9 +132,18 @@ import { NotFoundComponent } from './pages/errors/not-found/not-found.component'
     SearchComponent,
     NotFoundComponent
   ],
+  exports: [
+   
+    ],
   providers: [ 
     AppSettings,
-    { provide: PERFECT_SCROLLBAR_CONFIG, useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG }
+    { provide: PERFECT_SCROLLBAR_CONFIG, useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG },
+
+      AuthService
+    //   , 
+    // MensajesService,
+    // FiredatabaseService,
+    // ModalMensajeComponent
   ],
   bootstrap: [ AppComponent ]
 })

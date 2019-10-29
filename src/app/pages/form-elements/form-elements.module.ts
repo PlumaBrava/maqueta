@@ -16,6 +16,11 @@ import { ValidationsComponent } from './validations/validations.component';
 import { WizardComponent } from './wizard/wizard.component';
 import { EditorComponent } from './editor/editor.component';
 
+// import { LoginComponent } from './login.component';
+// import { AuthService } from './services/firebase/auth.service';
+// import { FiredatabaseService } from './services/firebase/firedatabase.service';
+// import {MensajesService} from './services/mensajes/mensajes.service';
+
 export const routes = [
   { path: '', redirectTo: 'controls', pathMatch: 'full'},
   { path: 'controls', component: ControlsComponent, data: { breadcrumb: 'Form Controls' } },
@@ -46,6 +51,16 @@ export const routes = [
     ValidationsComponent,
     WizardComponent,
     EditorComponent
-  ]
+  ],
+  // exports: [
+  //  FileUploaderComponent
+  //   ],
+  providers: [ 
+   
+    // AuthService, 
+    // MensajesService,
+    // FiredatabaseService
+
+  ],
 })
 export class FormElementsModule { }

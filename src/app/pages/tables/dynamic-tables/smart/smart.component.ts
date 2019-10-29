@@ -81,6 +81,8 @@ export class SmartComponent {
     const req = new XMLHttpRequest();
     req.open('GET', 'assets/data/users.json');
     req.onload = () => {
+      console.log('req.response',req.response);
+      console.log('req.response',JSON.parse(req.response));
       data(JSON.parse(req.response));
     };
     req.send();
@@ -95,15 +97,15 @@ export class SmartComponent {
   }
 
   public onRowSelect(event){
-   // console.log(event);
+   console.log('onRowSelect',event);
   }
 
   public onUserRowSelect(event){
-    //console.log(event);   //this select return only one page rows
+    console.log('onUserRowSelect',event);   //this select return only one page rows
   }
 
   public onRowHover(event){
-    //console.log(event);
+    console.log('onRowHover',event);
   }
 
 }
